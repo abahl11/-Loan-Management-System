@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LoanDesk</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231f4e8c'/%3E%3Ctext x='16' y='22' font-size='17' font-family='Arial' font-weight='bold' fill='%23f2a541' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <section id="authScreen" class="auth-wrap hidden">
+        <div class="auth-card">
+            <div class="brand big">Loan<span>Desk</span></div>
+            <p class="muted">Loan Management System</p>
+
+            <div class="switcher">
+                <button type="button" data-auth-tab="login" class="active">Login</button>
+                <button type="button" data-auth-tab="register">Register</button>
+            </div>
+
+            <form id="loginForm" class="stack">
+                <label>Email<input name="email" type="email" required autocomplete="username"></label>
+                <label>Password<input name="password" type="password" required autocomplete="current-password"></label>
+                <button class="btn full">Login</button>
+            </form>
+
+            <form id="registerForm" class="stack hidden">
+                <label>Full name<input name="fullName" required minlength="2"></label>
+                <label>Email<input name="email" type="email" required></label>
+                <label>Phone<input name="phone" placeholder="optional"></label>
+                <label>Password<input name="password" type="password" required minlength="6"></label>
+                <button class="btn full">Create customer account</button>
+            </form>
+
+            <div class="demo-box">
+                <p>Demo accounts (click to fill):</p>
+                <button type="button" data-demo="admin@loandesk.com|Admin@123">Admin</button>
+                <button type="button" data-demo="officer@loandesk.com|Officer@123">Loan Officer</button>
+                <button type="button" data-demo="customer@loandesk.com|Customer@123">Customer</button>
+            </div>
+            <a class="docs-link" href="/api-docs" target="_blank" rel="noopener">API documentation (Swagger) &rarr;</a>
+        </div>
+    </section>
+
+    <section id="appScreen" class="hidden">
+        <header class="topbar">
+            <div class="brand">Loan<span>Desk</span></div>
+            <nav id="mainNav"></nav>
+            <div class="who">
+                <span id="whoName"></span>
+                <span id="whoRole" class="role-tag"></span>
+                <button id="logoutBtn" class="btn small ghost">Logout</button>
+            </div>
+        </header>
+        <main id="view"></main>
+    </section>
+
+    <div id="modal" class="modal hidden">
+        <div class="modal-box">
+            <button type="button" class="modal-close" data-close aria-label="Close">&times;</button>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

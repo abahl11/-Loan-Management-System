@@ -1,0 +1,31 @@
+services:
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
+
+  api:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      mongo:
+        condition: service_healthy
+    ports:
+      - "${APP_PORT:-5000}:5000"
+    environment:
+      MONGO_URI: mongodb://mongo:27017/loan_desk
+      JWT_SECRET: change-this-in-real-use
+      JWT_EXPIRES_IN: 1d
+    volumes:
+      - uploads:/app/uploads
+
+volumes:
+  mongo_data:
+  uploads:
