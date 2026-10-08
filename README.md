@@ -15,9 +15,9 @@ Still, to make it easy to visualise and test, a simple **Frontend** (plain HTML/
 
 ## 1. Quickest way to check it – live link
 
-**Live app:** `RENDER_LINK`
+**Live app:** https://loandesk.onrender.com
 
-**API documentation (Swagger):** `RENDER_LINK/api-docs`
+**API documentation (Swagger):** https://loandesk.onrender.com/api-docs
 
 Nothing to install. Open the link and log in with one of the demo accounts below.
 
